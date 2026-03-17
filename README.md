@@ -83,21 +83,4 @@ Render is incredibly easy for static assets. Follow these steps:
      notes text
    );
    ```
-   After that will need to create a policie
-   row-level security policy for table "merchants"
-   Por defecto, cuando se crea una tabla nueva en Supabase, viene con algo llamado RLS (Row-Level Security) activado. 
-   Esto significa que la base de datos está "bloqueada" y rechazará cualquier acción (como insertar datos) a menos que le digas explícitamente quién tiene permiso.
-   Para esto ejecutamos 
-   ```sql
-   -- Primero, por si acaso, habilitamos o confirmamos que RLS está activo en la tabla
-   ALTER TABLE merchants ENABLE ROW LEVEL SECURITY;
-   
-   -- Segundo, creamos la regla que permite que CUALQUIERA pueda insertar un nuevo registro
-   CREATE POLICY "Permitir inserts a todo publico" 
-   ON merchants 
-   FOR INSERT 
-   TO public 
-   WITH CHECK (true);
-   ```
-   
-4. Now open `main.js` and uncomment the `supabase.from('merchants').insert([payload]);` code block once your table is ready. The form matches these column names exactly!
+3. Now open `main.js` and uncomment the `supabase.from('merchants').insert([payload]);` code block once your table is ready. The form matches these column names exactly!
